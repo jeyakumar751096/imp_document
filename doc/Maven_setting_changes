@@ -1,0 +1,35 @@
+setting.xml--->maven confic seting file changes
+===========
+
+ <localRepository>${user.home}/.m2/repository</localRepository>
+ 
+ --
+  <proxies> 
+    <proxy>
+      <id>optional</id>
+	<active>true</active>
+	<protocol>http</protocol>
+	<username>751096</username>
+	<password>1985@DEVI</password>
+	<host>labproxy.cognizant.com</host>
+	<port>6050</port>
+	<nonProxyHosts>local.net</nonProxyHosts>    
+    </proxy>
+    
+  </proxies>
+  
+  ---
+  <profile>
+		<id>maven-repo</id>
+		<activation>
+			<activeBYDefault>true</activeBYDefault>
+		</activation>
+		<repositories>
+			<repository>
+				<id>repo.maven.apache.org</id>
+				<url>https://repo.maven.apache.org/maven2/</url>
+				<!--<url>file://D:/Users/751096/.m2/repository/</url>-->
+			</repository>
+		</repositories>
+	</profile>
+  </profiles>

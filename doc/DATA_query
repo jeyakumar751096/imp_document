@@ -1,0 +1,110 @@
+CREATE TABLE cus_tbl(  
+   cus_id INT NOT NULL AUTO_INCREMENT,  
+   cus_firstname VARCHAR(100) NOT NULL,  
+   cus_surname VARCHAR(100) NOT NULL,  
+   PRIMARY KEY ( cus_id )  
+);  
+
+=======================
+1.OutReachEventInformation--->ExistingEventDetails
+=============================
+CREATE TABLE OutReachEventInformation(
+OutReachEventInformId int(100) NOT NULL AUTO_INCREMENT,
+EventID	VARCHAR(20) NOT NULL,
+BaseLocation VARCHAR(50) NOT NULL,	
+BeneficiaryName	VARCHAR(200) NOT NULL,
+CouncilName	VARCHAR(50) NOT NULL,
+EventName VARCHAR(100) NOT NULL,	
+EventDescription VARCHAR(500) NOT NULL,
+EventDate DATE NOT NULL,	
+EmployeeID	int(6),
+EmployeeName VARCHAR(50) NOT NULL,		
+VolunteerHours	Double(10,2),
+TravelHours	Double(10,2),
+LivesImpacted Double(10,2),
+BusinessUnit VARCHAR(50) NOT NULL,		
+Status VARCHAR(50) NOT NULL,	
+IIEPCategory VARCHAR(100) NOT NULL,
+PRIMARY KEY(OutReachEventInformId)
+);
+
+2.OutreachEventsSummary-->EventsSummary
+============================
+CREATE TABLE OutreachEventsSummary(
+OutreachEventsSummaryId int NOT NULL AUTO_INCREMENT,
+EventID	VARCHAR(50) NOT NULL,
+Months VARCHAR(5) NOT NULL,	
+BaseLocation VARCHAR(50) NOT NULL,	
+BeneficiaryName	VARCHAR(300) NOT NULL,
+VenueAddress VARCHAR(300) NOT NULL,	
+CouncilName	VARCHAR(50) NOT NULL,
+Project	VARCHAR(50) NOT NULL,
+Category VARCHAR(50) NOT NULL,
+EventName VARCHAR(300) NOT NULL,	
+EventDescription VARCHAR(300) NOT NULL,	
+EventDate DATE NOT NULL,
+Totalnoofvolunteers Double(10,2),	
+TotalVolunteerHours	Double(10,2),
+TotalTravelHours Double(10,2),	
+OverallVolunteeringHours Double(10,2),	
+LivesImpacted Double(10,2),	
+ActivityType Double(10,2),	
+summary_Status	VARCHAR(50) NOT NULL,
+POCID VARCHAR(50) NOT NULL,	
+POCName VARCHAR(50) NOT NULL,	
+POCContactNumber VARCHAR(50) NOT NULL,
+PRIMARY KEY(OutreachEventsSummaryId)
+);
+
+VolunteerEnrollmentDetailsUnregistered_notattend
+============================================
+CREATE TABLE VolunteerEnrollmentDetailsUnregistered_notattend(
+VolunteerEnrollmentId int NOT NULL AUTO_INCREMENT,
+EventID	VARCHAR(50) NOT NULL,
+EventName VARCHAR(50) NOT NULL,	
+BeneficiaryName	VARCHAR(50) NOT NULL,
+BaseLocation VARCHAR(50) NOT NULL,	
+EventDate DATE NOT NULL,	
+EmployeeID int(6),
+EnrollmentDetailNotAttend BOOLEAN,
+EnrollmentDetailsUnregistered BOOLEAN,
+FeedbackQuestionId int(50),
+PRIMARY KEY(VolunteerEnrollmentId)); 
+
+===========================
+paticipant_FeedBack
+====================
+CREATE TABLE PaticipantFeedBack(
+PaticipantFeedBackID int NOT NULL AUTO_INCREMENT,
+EmployeeID int(2),
+EventID	VARCHAR(50) NOT NULL,
+Rating int(2),
+PRIMARY KEY(PaticipantFeedBackID));
+-----------
+FeedbackType -->enum
+=======
+Participated
+notParticipated
+unRegister
+
+TypeOfQuestions--->enum
+===================
+	MULTIPLEANSWER,FREETESTANSWER,CUSTOMQUESTION;
+
+FeedbackQuestion
+=================
+CREATE TABLE FeedbackQuestion(
+FeedbackQuestionId int NOT NULL AUTO_INCREMENT,
+FeedbackTypeStaus VARCHAR(50) NOT NULL,
+QuestionTypeStaus VARCHAR(50) NOT NULL,
+Questions VARCHAR(500) NOT NULL,
+PRIMARY KEY(FeedbackQuestionId));
+
+FeedbackQuestionAnswer
+=======================
+CREATE TABLE FeedbackQuestionAnswer(
+FeedbackQuestionAnswerId int NOT NULL AUTO_INCREMENT,
+FeedbackQuestionAnswer VARCHAR(50) NOT NULL,
+FeedbackQuestionId int(50),
+EventID VARCHAR(50) NOT NULL,
+PRIMARY KEY(FeedbackQuestionAnswerId));

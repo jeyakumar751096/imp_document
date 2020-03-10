@@ -1,0 +1,25 @@
+10.249.216.167
+labproxy.cognizant.com
+git config --global http.proxy http://10.249.216.167:1985@DEVI@labproxy.cognizant.com:6050
+
+set HTTP_PROXY=http://10.249.216.167:1985@DEVI@labproxy.cognizant.com:6050
+set HTTPS_PROXY=http://10.249.216.167:1985@DEVI@labproxy.cognizant.com:6050
+
+ git init
+ git remote add origin https://github.com/jeyakumar751096/KRJ_FSM.git
+ git add spring-batch-excel
+ git commit -m "checking first project"
+ 
+  git push -u origin master
+  
+  
+   git config --global user.name "jeyakumar751096"
+    git config --global user.email Jeyakumar.KR@cognizant.com
+	
+	git add spring-batch-excel
+	git merge lib_feedback_management_system_entity
+	git add lib_feedback_management_system_entity
+	
+	git pull https://github.com/jeyakumar751096/KRJ_FSM.git
+
+
