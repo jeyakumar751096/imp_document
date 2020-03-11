@@ -1,0 +1,45 @@
+CREATE TABLE cus_tbl(  
+   cus_id INT NOT NULL AUTO_INCREMENT,  
+   cus_firstname VARCHAR(100) NOT NULL,  
+   cus_surname VARCHAR(100) NOT NULL,  
+   PRIMARY KEY ( cus_id )  
+);  
+------------
+User
+=====
+CREATE TABLE User( userId INT NOT NULL AUTO_INCREMENT, 
+username VARCHAR(100) NOT NULL,
+ password VARCHAR(100) NOT NULL,
+dateCreated DATE NOT NULL,
+authorityId int,
+PRIMARY KEY(userId),
+CONSTRAINT FK_Authority FOREIGN KEY (authorityId)
+    REFERENCES Authority(authorityId));
+
+Authority
+==========
+CREATE TABLE Authority(
+authorityId INT NOT NULL AUTO_INCREMENT, 
+authorityName VARCHAR(100) NOT NULL,
+PRIMARY KEY(authorityId));
+
+user_authority
+================
+CREATE TABLE user_authority(
+authorityId INT,
+userId INT);
+
+enum  AuthorityType
+=================== {
+    ROLE_ADMIN,
+    ROLE_USER
+	
+	
+INSERT INTO authority(`authorityId`,`authorityName`) VALUES (1,'ROLE_ADMIN');
+INSERT INTO `authority`(`authorityName`, `authorityId`) VALUES ('ROLE_USER', 2);
+
+INSERT INTO `user_authority`(`authorityId`, `userId`) VALUES (1, 1);
+INSERT INTO `user_authority`(`authorityId`, `userId`) VALUES (2, 2);
+
+INSERT INTO `user` (`userId`, `username`, `password`, `dateCreated`) VALUES (1,'ironman','$2a$10$jXlure/BaO7K9WSQ8AMiOu3Ih3Am3kmmnVkWWHZEcQryZ8QPO3FgC','2015-11-15 22:14:54');
+INSERT INTO `user` (`userId`, `username`, `password`, `dateCreated`) VALUES (2,'rabi','$2a$10$0tFJKcOV/Io6I3vWs9/Tju8OySoyMTpGAyO0zaAOCswMbpfma0BSK','2015-10-15 22:14:54');
